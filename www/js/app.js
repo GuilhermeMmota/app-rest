@@ -50,31 +50,38 @@ var mainView = app.views.create('.view-main', {
 //  // Alert username and password
 //  app.dialog.alert('Username: ' + username + '<br>Password: ' + password);
 //});
-
-// -------------------SignUp------------------
+//// -------------------SignUp------------------
 $$('#my-login-screen .SignUp').on('click', function () {
-  var username = $$('#my-login-screen [name="email"]').val();
-  var password = $$('#my-login-screen [name="password"]').val();
-
-  // Close login screen
-  app.loginScreen.close('#my-login-screen');
+ var username = $$('#my-login-screen [name="email"]').val();
+ var password = $$('#my-login-screen [name="password"]').val();
 
   // Alert username and password
-  app.dialog.alert('Username: ' + username + '<br>Password:' + password);
+  //app.dialog.alert('Username: ' + username + '<br>Password: ' + password);
   firebase
     .auth()
     .createUserWithEmailAndPassword(username,password)
     .then( function(){
       app.dialog.alert('Welcome: ' + username);
-      this.$$('.toolbar-inner').text('Welcome: ' + username);
+      this.$$('.toolbar-inner').text('Welcome: ' + username);         
     })
-    .cath( function(error){
+    .catch( function(error){
       console.error(error.code)
       console.error(error.message)
+      if (error.code =='auth/invalid-email'){
+        app.dialog.alert('E-mail inválido!!!');
+      }$$('#btnSalvar').on('click', function () {
+    var formData = app.form.convertToData('#form-user-content')
+    var name = $$('#name [name="name"]').val();
+    var name = $$('#age [name="age"]').val();
+    alert(JSON.stringify(formData))
+    firebase.database().ref().child('usuarios').push(JSON.stringify(formData))
+    
+});
       app.dialog.alert('Falha ao cadastrar, verifique o erro no console');
-      this.$$('.toolbar-inner').text('Welcome:' + username);
     })
-  });
+  // Close login screen
+  app.loginScreen.close('#my-login-screen');
+});
 
   // ------------------------------SingIn----------------------------------
 
@@ -109,41 +116,39 @@ $$('#my-login-screen .SignUp').on('click', function () {
      });
 
     // --------------------SignOut-----------------
-
-    $$('#my-login-screen .SignOut').on('click', function () {
+$$('#my-login-screen .SignOut').on('click', function () {
+  app.loginScreen.close('#my-login-screen');
+  $$('#email').val('');
+  $$('#password').val('');
+  firebase
+    .auth()
+    .signOut()
+    .then( function () {
+      this.$$('.toolbar-inner').text('Usuário não autenticado');
+      app.dialog.alert('Usuário não autenticado');
       app.loginScreen.close('#my-login-screen');
-      $$('#email').val('');
-      $$('#password').val('');
-      firebase
-      .auth()
-      .signOut()
-      .then( function () {
-        this.$$('.toolbar-inner').text('Usuário invalido');
-        app.dialog.alert('Usuário invalido');
-        app.loginScreen.close('#my-login-screen');
-        $$('.logoff').hide('');
-        $$('.login-screen-open').show('');
-      }, function(error){
-        console.error(error)
-      })
-    });
-// -----------------------------------------------------------------
-    $$('#my-login-screen .login-screen-close').on('click', function () {
-      $$('#email').val('');
-      $$('#password').val('');
-    })
-    $$('.logoff').on('click', function () {
-      firebase
-      .auth()
-      .signOut()
-      .then( function () {
-        this.$$('.toolbar-inner').text('Usuário invalido');
-        app.dialog.alert('Usuário invalido');
-        $$('#email').val('');
-        $$('#password').val('');
-        $$('.logoff').hide('');
-        $$('.login-screen-open').show('');
+      $$('.logoff').hide();
+      $$('.login-screen-open').show();      
     }, function(error){
       console.error(error)
     })
-    }) 
+});
+$$('#my-login-screen .login-screen-close').on('click', function () {
+  $$('#email').val('');
+  $$('#password').val('');
+})
+$$('.logoff').on('click', function () {
+  firebase
+    .auth()
+    .signOut()
+    .then( function () {
+      this.$$('.toolbar-inner').text('Usuário não autenticado');
+      app.dialog.alert('Usuário não autenticado');
+      $$('#email').val('');
+      $$('#password').val('');
+      $$('.logoff').hide();
+      $$('.login-screen-open').show();
+    }, function(error){
+      console.error(error)
+    })  
+})

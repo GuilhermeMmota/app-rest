@@ -59,10 +59,10 @@
                   <a href="/form/" data-view=".view-main" class="panel-close">Form</a>
                 </li>
                 <li>
-                  <a href="#" data-login-screen="#my-login-screen" class="login-screen-open">Login</a>
+                  <a href="#" class="login-screen-open" data-login-screen="#my-login-screen">Login</a>
                 </li>
 				  <li>
-					  <a href="#" data-popup=".cadastro" class="popup-open">Cadastro</a>
+					  <a href="#" data-popup="cadastro" class="popup-open">Cadastro</a>
 				  </li>
 				<li>
 				  <a href="#" class="logoff">Logoff</a>
@@ -120,13 +120,19 @@
           </div>
         </div>
         <!-- Scrollable page content-->
-        <div class="page-content">
+        <div class="page-content">	
+			<div class="swiper-container swiper-init demo-swiper">
+                  <div class="swiper-wrapper">
+                  <div class="swiper-slide"><img src="img/rest-bg.jpg" alt="Bikcraft"></div>
+              	  </div> 
+            </div>    
           <div class="block block-strong">
-            <p>This is an example of split view application layout, commonly used on tablets. The main approach of such kind of layout is that you can see different views at the same time.</p>
+           <p>Rua Marechal 29 – Copacabana – Rj</p>
+			<p class="telefone">2422-9201</p>
 
-            <p>Each view may have different layout, different navbar type (dynamic, fixed or static) or without navbar.</p>
-
-            <p>The fun thing is that you can easily control one view from another without any line of JavaScript just using "data-view" attribute on links.</p>
+           <h2 class="subtitulo">Cardápio do Dia</h2>
+			 <div class="swiper-slide"><img src="img/.jpg" alt=""></div> 
+			  
           </div>
 
          <!-- <div class="block-title">Navigation</div> -->
@@ -216,7 +222,8 @@
         </div>
       </div>
     </div>
-	  <!-- Login Screen -->
+<!--
+	   Login Screen 
     <div class="login-screen" id="my-login-screen">
 	<div class="popup cadastro">
       <div class="view">
@@ -240,17 +247,26 @@
      </div>
 	<div class="block">
 	<p class="row">
-		<button class="col button color-red" id="addbutton">Cadastrar</button>
-    	<button class="col button color-green">Voltar</button>
+		<button class="col button button-round color-red" id="addbutton">Cadastrar</button>
+    	<button class="col button button-round color-green">Voltar</button>
 	</p>		  
 	</div>
     </form>	
 		</div>
 		</div>	
+-->
     <!-- Login Screen -->
     <div class="login-screen" id="my-login-screen">
       <div class="view">
         <div class="page">
+            <div class="navbar">
+                <div class="navbar-inner">
+                  <div class="title"></div>
+                  <div class="right">
+                    <a href="#" class="login-screen-close">Close</a>
+                  </div>
+                </div>
+              </div>          
           <div class="page-content login-screen-content">
             <div class="login-screen-title">Login</div>
             <div class="list">

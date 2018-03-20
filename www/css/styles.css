@@ -13,3 +13,18 @@
 .statusbar-overlay {
     background: #000000;
 }
+
+.telefone:after, .telefone:before {
+	content: "";
+	display: inline-block;
+	width: 80px;
+}
+.subtitulo {
+	color: #4d4d4d;
+	font-size: 2em;
+	letter-spacing: .1em;
+	text-align: center;
+	border-top: 2px solid #4d4d4d;
+	border-bottom: 2px solid #4d4d4d;
+	text-transform: uppercase;
+}

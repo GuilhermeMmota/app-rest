@@ -1,37 +1,127 @@
-<html>
-<head>
-<!-- Required meta tags-->
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
-<title>App</title>
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
-</head>
- <body>
- <div class="page">
-    <div class="page-content login-screen-content">
-	  <div class="navbar">
-		<div class="left">
-          <a href="#" class="back link">
-             <i class="f7-icons">chevron_left</i>
-              <span>Back</span>
-          </a>
-	   </div>  
-  <div class="login-screen-title">Cadastro</div>
-<form>
-   <div class="form-group">
-        <label for="nameInput">Nome</label>
-        <input type="text" name="form-control" id="nameInput" placeholder="Nome">
-   </div>
-   <div class="form-group">
-        <label for="ageInput">Idade</label>
-        <input type="number" name="form-control" id="ageInput" placeholder="Idade">
-   </div>
-        <button class="btn btn-lg btn-block btn-primary" id="addbutton">Cadastrar</button>
-        <a href="index.html" class="btn btn-lg btn-block btn-warning">Voltar</a>
-</form>		  
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-<script src="https://www.gstatic.com/firebasejs/4.11.0/firebase.js"></script>		  
-<script src="js/appcadastro.js"></script>
-<script src="js/app.js"></script>
- </body>		  
-</html>		  
+<div class="page" data-name="form-user">
+  <div class="navbar color-theme-orange">
+    <div class="navbar-inner sliding">
+      <div class="left">
+        <a href="#" class="link back">
+          <i class="icon icon-back"></i>
+          <span class="ios-only">Back</span>
+        </a>
+      </div>
+      <div class="title">Contato</div>
+    </div>
+  </div>
+  <div class="page-content">
+    <div class="block-title">Usuário</div>
+    <!-- <div class="list no-hairlines-md"> -->
+      <div class="list">
+        <form class="list" id="form-content-user">
+        <ul>
+          <li>
+            <div class="item-content item-input">
+              <div class="item-inner">
+                <div class="item-title item-label">Nome</div>
+                <div class="item-input-wrap">
+                  <input type="text" name="nameInput" id="nameInput" placeholder="Your name"/>
+                </div>
+              </div>
+            </div>
+          </li>
+          <li>
+            <div class="item-content item-input">
+              <div class="item-inner">
+                <div class="item-title item-label">E-mail</div>
+                <div class="item-input-wrap">
+                  <input type="email" name="emailInput" id="emailInput" placeholder="E-mail"/>
+                </div>
+              </div>
+            </div>
+          </li>
+          <li>
+            <div class="item-content item-input">
+              <div class="item-inner">
+                <div class="item-title item-label">Telefone</div>
+                <div class="item-input-wrap">
+                  <input type="tel" name="ageInput" id="ageInput" placeholder="Your age"/>
+                </div>
+              </div>
+            </div>
+          </li>
+			 <li>
+            <div class="item-content item-input">
+              <div class="item-inner">
+                <div class="item-title item-label">Assunto</div>
+                <div class="item-input-wrap">
+                  <input type="text" name="emailInput" id="emailInput" placeholder="E-mail"/>
+                </div>
+              </div>
+            </div>
+          </li>
+          <!-- <li>
+            <div class="item-content item-input">
+              <div class="item-inner">
+                <div class="item-title item-label">Telefone</div>
+                <div class="item-input-wrap">
+                  <input type="tel" placeholder="WhatsApp"/>
+                </div>
+              </div>
+            </div>
+          </li>
+          <li> -->
+<!--
+            <div class="item-content item-input">
+              <div class="item-inner">
+                <div class="item-title item-label">Sexo</div>
+                <div class="item-input-wrap">
+                  <select name="genderSelect" id="genderSelect">
+                    <option>Masculino</option>
+                    <option>Feminino</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+          </li>
+          <li>
+            <div class="item-content item-input">
+              <div class="item-inner">
+                <div class="item-title item-label">Data de Aniversário</div>
+                <div class="item-input-wrap">
+                  <input type="date" name="inputBirth" id="inputBirth" placeholder="Data de Aniversário" value="2014-04-30"/>
+                </div>
+              </div>
+            </div>
+          </li>
+-->
+          <li>
+            <div class="item-content item-input">
+              <div class="item-inner">
+                <div class="item-title item-label">Foto</div>
+                <div class="item-input-wrap">
+                  <progress value="0" max="100" id="uploader"></progress>
+                  <br/>
+                  <input type="file" value="Upload" id="inputPhoto">
+                  <img src="" alt="" id="imgPhoto" width="100" height="100">
+                </div>
+              </div>
+            </div>
+          </li>
+          <li class="align-top">
+            <div class="item-content item-input">
+              <div class="item-inner">
+                <div class="item-title item-label">Bio</div>
+                <div class="item-input-wrap">
+                  <textarea placeholder="Bio" name="inputBio" id="inputBio"></textarea>
+                </div>
+              </div>
+            </div>
+          </li>
+        </ul>
+        </form>  
+      </div>
+      <div class="block block-strong">
+        <p class="row">
+          <a href="#" id="btnSalvar" class="col button button-big button-raised" >Enviar</a>
+          <a href="#" class="col button button-big button-fill button-raised" id="btnCancelar">Cancelar</a>
+        </p>
+      </div>
+  </div>
+</div>
