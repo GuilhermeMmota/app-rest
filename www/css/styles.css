@@ -28,3 +28,30 @@
 	border-bottom: 2px solid #4d4d4d;
 	text-transform: uppercase;
 }
+p{
+	text-align: center;
+}
+.cardapio{
+	text-align: center;
+}
+
+.nav-footer ul li:before {
+	content: "•";
+	display: inline-block;
+	position: absolute;
+	margin-left: -15px;
+	color: #787367;
+}
+
+
+.nav-footer li {
+	display: inline-block;
+	padding: 10px;
+	font-size: 2em;
+}
+.nav-footer ul li a {
+	color: #787367;
+}
+.fundo{
+	background: #000;
+}

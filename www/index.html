@@ -24,6 +24,7 @@
   <link rel="stylesheet" href="framework7/css/framework7.min.css">
   <link rel="stylesheet" href="css/icons.css">
   <link rel="stylesheet" href="css/app.css">
+  <script src="js/jquery-1.11.1.min.js"></script>
   
 </head>
 <body>
@@ -62,7 +63,7 @@
                   <a href="#" class="login-screen-open" data-login-screen="#my-login-screen">Login</a>
                 </li>
 				  <li>
-					  <a href="#" data-popup="cadastro" class="popup-open">Cadastro</a>
+					  <a href="/contato/" data-view=".view-main" class="panel-close">Contato</a>
 				  </li>
 				<li>
 				  <a href="#" class="logoff">Logoff</a>
@@ -94,7 +95,7 @@
       <!-- Page, data-name contains page name which can be used in callbacks -->
       <div class="page" data-name="home">
         <!-- Top Navbar -->
-        <div class="navbar">
+        <div class="navbar color-black">
           <div class="navbar-inner">
             <div class="left">
               <a href="#" class="link icon-only panel-open" data-panel="left">
@@ -112,11 +113,10 @@
           </div>
         </div>
         <!-- Toolbar-->
-        <div class="toolbar">
+        <div class="toolbar color-black">
           <div class="toolbar-inner">
             <a href="#" class="link">Left Link</a>
             <a href="#" class="link">Right Link</a>
-			<a href="#" class="link">Logoff</a>
           </div>
         </div>
         <!-- Scrollable page content-->
@@ -127,24 +127,54 @@
               	  </div> 
             </div>    
           <div class="block block-strong">
-           <p>Rua Marechal 29 – Copacabana – Rj</p>
-			<p class="telefone">2422-9201</p>
-
            <h2 class="subtitulo">Cardápio do Dia</h2>
-			 <div class="swiper-slide"><img src="img/.jpg" alt=""></div> 
-			  
+			<div class="swiper-container swiper-init demo-swiper">
+                  <div class="swiper-wrapper">  
+			 <div class="swiper-slide"><img src="img/feijo.jpg" alt="feijoada"></div> 
           </div>
-
+			  </div>
+			  <h3 class="cardapio">Feijoada:</h3>
+			  	<p>Paio <br>
+                   Lombo <br>
+                   Costela <br>
+				   Carne Seca <br>
+			  	   Linguiça Calabresa</p>
+			<div class="swiper-container swiper-init demo-swiper">
+                  <div class="swiper-wrapper">  
+			 <div class="swiper-slide"><img src="img/salada.jpg" alt="salada"></div> 
+          </div>
+			  </div> 
+			  <h3 class="cardapio">Salada:</h3>
+			    <p>Alface Crespa, <br>
+					Alface Americana, <br>
+					Cenoura e Manga, <br>
+					Rúcula com tomate seco.</p>
+			  <div class="swiper-container swiper-init demo-swiper">
+                  <div class="swiper-wrapper">  
+			 <div class="swiper-slide"><img src="img/lingua.jpg" alt="cardapio"></div> 
+          </div>
+			  </div> 
+			  <h3 class="cardapio">Linguiça:</h3>
+				 <p>Linguiça Acebolada</p>			  
+			</div>	
          <!-- <div class="block-title">Navigation</div> -->
-          <div class="list">
-            <ul>
-              <li>
-                <a href="/about/" class="item-content item-link">
-                  <div class="item-inner">
-                    <div class="item-title">About</div>
-                  </div>
-                </a>
-              </li>
+          	<footer class="fundo">
+				<p>Rua Marechal 29 – Copacabana – SP</p>
+				<p class="telefone">2422-9201</p>
+			<nav class="nav-footer">
+				<ul>
+					<li><a href="sobre.html">Sobre</a></li>
+					<li><a href="contato.html">Contato</a></li>
+				</ul>
+			</nav>
+
+
+			<p>Rest © 2015. Alguns direitos reservados.</p>
+		</footer>
+
+           
+			<div class="list">
+			 <ul>	
               <li>
                 <a href="/cadastro/" class="item-content item-link">
                   <div class="item-inner">
@@ -324,5 +354,6 @@
   <script src="js/firebaseapp.js"></script>
   <script src="js/app.js"></script>
   <script src="js/appcadastro.js"></script>
+  <script src="js/contato.js"></script>	
 </body>
 </html>

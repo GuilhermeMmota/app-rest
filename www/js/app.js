@@ -1,5 +1,7 @@
 // Dom7
 var $$ = Dom7;
+$$('.logoff').hide();
+$$('.login-screen-open').show();
 
 // Framework7 App main instance
 var app  = new Framework7({

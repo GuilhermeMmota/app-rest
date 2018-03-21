@@ -7,9 +7,9 @@ routes = [
     path: '/login/',
     url: './pages/login.html',
   },
-  {
-   path: '/cadastro/',
-   url: './pages/cadastro.html',
+ {
+    path: '/contato/',
+    url: './pages/contato.html',
   },
   {
     path: '/about/',
