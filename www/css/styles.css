@@ -19,9 +19,9 @@
 	display: inline-block;
 	width: 80px;
 }
-.subtitulo {
+.subtitulo, .abo h2 {
 	color: #4d4d4d;
-	font-size: 2em;
+	font-size: 25px;
 	letter-spacing: .1em;
 	text-align: center;
 	border-top: 2px solid #4d4d4d;
@@ -52,6 +52,9 @@ p{
 .nav-footer ul li a {
 	color: #787367;
 }
-.fundo{
-	background: #000;
+
+.fundo img{
+	position: relative;
+	left: 120px;
 }
+
