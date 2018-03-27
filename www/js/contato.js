@@ -26,7 +26,7 @@ $$(document).on('page:init','.page[data-name="contato"]', function(e){
                         $$('input#nameInput').val('');
                         $$('input#emailInput').val('');
                         $$('input#telInput').val('');
-						 $$('input#assuntoInput').val('');
+		        $$('input#assuntoInput').val('');
                         $$('input#inputBio').val('');
 
                         

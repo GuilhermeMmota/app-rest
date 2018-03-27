@@ -7,6 +7,10 @@ routes = [
     path: '/login/',
     url: './pages/login.html',
   },
+  {
+    path: '/cardapio_banco/',
+    url: './pages/cardapio_banco.html',
+  },
  {
     path: '/contato/',
     url: './pages/contato.html',
@@ -16,8 +20,8 @@ routes = [
     url: './pages/about.html',
   },
   {
-    path: '/form/',
-    url: './pages/form.html',
+    path: '/cardapio/',
+    url: './pages/cardapio.html',
   },
   // Left View Pages
   {
