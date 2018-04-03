@@ -66,15 +66,15 @@ $$('#my-login-screen .SignUp').on('click', function () {
       app.dialog.alert('Welcome: ' + username);
       this.$$('.toolbar-inner').text('Welcome: ' + username);         
     })
-    .catch( function(error){
+    .catch(function(error){
       console.error(error.code)
       console.error(error.message)
-      if (error.code =='auth/invalid-email'){
-        app.dialog.alert('E-mail inválido!!!');
+      if (error.code =='auth/ivalid-email'){
+        app.dialog.alert('Email invalido no seu formato!!!');
       }$$('#btnSalvar').on('click', function () {
-    var formData = app.form.convertToData('#form-user-content')
-    var name = $$('#name [name="name"]').val();
-    var name = $$('#age [name="age"]').val();
+        var formData = app.form.convertToData('#form-user-content')
+        var name = $$('#name [name="email"]').val();
+        var name = $$('#password [name="password"]').val();
     alert(JSON.stringify(formData))
     firebase.database().ref().child('usuarios').push(JSON.stringify(formData))
     
@@ -98,7 +98,7 @@ $$('#my-login-screen .SignUp').on('click', function () {
       .signInWithEmailAndPassword(username,password)
       .then( function(){
         app.dialog.alert('Welcome: ' + username);
-        this.$$('.toolbar-inner').text('Welcome: ' + username + 'you are online');
+        this.$$('.toolbar-inner').text('Welcome: ' + username + ' you are online');
         $$('.logoff').show();
         $$('.login-screen-open').hide();
         $$('#email').val('');
@@ -153,4 +153,26 @@ $$('.logoff').on('click', function () {
     }, function(error){
       console.error(error)
     })  
+})
+// ======================cardapio================
+firebase.database().ref('cardapio').on('value', function (snapshot){
+  //usersList.innerHTML = '';
+  $$("#usersList").empty();
+
+  snapshot.forEach(function(item){
+        var listHtml = '<div class="row block block-strong">';
+          //listHtml += '<td class="label-cell">'+item.key+'</td>';
+
+          listHtml += '<div class="col-25">'+ item.val().dia +'</div>';
+          listHtml += '<div class="col-25">'+ item.val().pratododia +'</div>';
+          listHtml += '<div class="col-25">'+ item.val().descricao +'</div>';
+          listHtml += '<div class="col-25">'+ item.val().preco +'</div>';
+          listHtml += '<div class="col-25"><img src="'+ item.val().imagem +'" width="200" height="150"/></div>';
+          listHtml += '</div>';
+          //e.append(listHtml).innerHTML;
+          if (semana[dia] == item.val().dia){
+              $$("#usersList").append(listHtml);
+          }    
+      
+  })
 })
