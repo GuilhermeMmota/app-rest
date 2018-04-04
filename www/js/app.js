@@ -2,6 +2,8 @@
 var $$ = Dom7;
 $$('.logoff').hide();
 $$('.login-screen-open').show();
+ 
+$$('#contato').hide();
 
 // Framework7 App main instance
 var app  = new Framework7({
@@ -57,22 +59,24 @@ $$('#my-login-screen .SignUp').on('click', function () {
  var username = $$('#my-login-screen [name="email"]').val();
  var password = $$('#my-login-screen [name="password"]').val();
 
-  // Alert username and password
+   // Close login screen
+   app.loginScreen.close('#my-login-screen');
   //app.dialog.alert('Username: ' + username + '<br>Password: ' + password);
   firebase
     .auth()
     .createUserWithEmailAndPassword(username,password)
     .then( function(){
       app.dialog.alert('Welcome: ' + username);
-      this.$$('.toolbar-inner').text('Welcome: ' + username);         
+      this.$$('.toolbar-inner').text('Welcome: ' + username);   
+      $$('#contato').show();      
     })
     .catch(function(error){
       console.error(error.code)
       console.error(error.message)
       if (error.code =='auth/ivalid-email'){
-        app.dialog.alert('Email invalido no seu formato!!!');
+        app.dialog.alert('Email invalido no seu formato!!!'); 
       }$$('#btnSalvar').on('click', function () {
-        var formData = app.form.convertToData('#form-user-content')
+        var formData = app.form.convertToData('#form-user-content') 
         var name = $$('#name [name="email"]').val();
         var name = $$('#password [name="password"]').val();
     alert(JSON.stringify(formData))
@@ -81,8 +85,7 @@ $$('#my-login-screen .SignUp').on('click', function () {
 });
       app.dialog.alert('Falha ao cadastrar, verifique o erro no console');
     })
-  // Close login screen
-  app.loginScreen.close('#my-login-screen');
+ 
 });
 
   // ------------------------------SingIn----------------------------------
@@ -91,8 +94,9 @@ $$('#my-login-screen .SignUp').on('click', function () {
     var username = $$('#my-login-screen [name="email"]').val();
     var password = $$('#my-login-screen [name="password"]').val();
     
-    // Alert username and password
-    app.dialog.alert('Username: ' + username + '<br>Password:' + password);
+   // // Close login screen
+   app.loginScreen.close('#my-login-screen');
+    // app.dialog.alert('Username: ' + username + '<br>Password:' + password);
     firebase
       .auth()
       .signInWithEmailAndPassword(username,password)
@@ -100,9 +104,10 @@ $$('#my-login-screen .SignUp').on('click', function () {
         app.dialog.alert('Welcome: ' + username);
         this.$$('.toolbar-inner').text('Welcome: ' + username + ' you are online');
         $$('.logoff').show();
+        $$('#contato').show(); 
         $$('.login-screen-open').hide();
         $$('#email').val('');
-        $$('#password').val('');
+        $$('#password').val(''); 
       })
       .cath( function(error){
         console.error(error.code)
@@ -113,8 +118,7 @@ $$('#my-login-screen .SignUp').on('click', function () {
         app.dialog.alert('Falha ao cadastrar, verifique o erro no console');
       })
 
-      // // Close login screen
-      app.loginScreen.close('#my-login-screen');
+      
      });
 
     // --------------------SignOut-----------------
@@ -163,11 +167,11 @@ firebase.database().ref('cardapio').on('value', function (snapshot){
         var listHtml = '<div class="row block block-strong">';
           //listHtml += '<td class="label-cell">'+item.key+'</td>';
 
-          listHtml += '<div class="col-25">'+ item.val().dia +'</div>';
-          listHtml += '<div class="col-25">'+ item.val().pratododia +'</div>';
-          listHtml += '<div class="col-25">'+ item.val().descricao +'</div>';
-          listHtml += '<div class="col-25">'+ item.val().preco +'</div>';
-          listHtml += '<div class="col-25"><img src="'+ item.val().imagem +'" width="200" height="150"/></div>';
+          listHtml += '<div class="col-20">'+ item.val().dia +'</div>';
+          listHtml += '<div class="col-20">'+ item.val().pratododia +'</div>';
+          listHtml += '<div class="col-20">'+ item.val().descricao +'</div>';
+          listHtml += '<div class="col-20">'+ item.val().preco +'</div>';
+          listHtml += '<div class="col-100"><img src="'+ item.val().imagem +'" width="320" height="200"/></div>';
           listHtml += '</div>';
           //e.append(listHtml).innerHTML;
           if (semana[dia] == item.val().dia){

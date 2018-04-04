@@ -18,7 +18,7 @@
   <meta name="theme-color" content="#2196f3">
   <meta name="format-detection" content="telephone=no">
   <meta name="msapplication-tap-highlight" content="no">
-  <title>My App</title>
+  <title>Rest</title>
 
   <link rel="stylesheet" href="css/styles.css">	
   <link rel="stylesheet" href="framework7/css/framework7.min.css">
@@ -127,26 +127,25 @@
           </div>  
         </div>
         <h3>Aberto de Segunda à Sábado das 11h às 14h.</h3>
-    <div class="page-content">
-      <h3 class="cardapio">Cardápios</h3>
-        <div class="block">
-            <div class="row">
-                <div class="col-25 ">Dia</div>
-                <div class="col-25 ">Prato do Dia</div>
-                <div class="col-25 ">Descrição</div>
-                <div class="col-25 ">Preço</div>
-                <div class="col-25 "></div>
+        <div class="page-content">
+          <h3 class="cardapio">Cardápios</h3>
+            <div class="block">
+                <div class="row">
+                    <div class="col-20 ">Dia</div>
+                    <div class="col-20 ">Prato do Dia</div>
+                    <div class="col-20 ">Descrição</div>
+                    <div class="col-20 ">Preço</div>
+                    <!-- <div class="col-20 ">Imagem</div> -->
+                </div>
+               <div id="usersList"></div>
             </div>
-           <div id="usersList">
-           </div>
-      </div>
-    </div>	
+         </div>		
     
          <!-- <div class="block-title">Navigation</div> -->
 			<div class="list">
 			 <ul>	
               <li>
-                <a href="/contato/" class="item-content item-link">
+                <a href="/contato/" class="item-content item-link" id="contato">
                   <div class="item-inner">
                     <div class="item-title">Contato</div>
                   </div>
@@ -232,7 +231,6 @@
                   <a href="#" class="item-link list-button login-button SignOut">Sign Out</a>
                 </li>
               </ul>
-              <div class="block-footer">Some text about login information.<br>Click "Sign In" to close Login Screen</div>
             </div>
           </div>
         </div>
