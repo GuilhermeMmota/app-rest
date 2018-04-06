@@ -22,11 +22,11 @@ $$(document).on('page:init', '.page[data-name="listar_cardapio"]', function (e) 
               var listHtml = '<div class="row block block-strong">';
                 //listHtml += '<td class="label-cell">'+item.key+'</td>';
 
-                listHtml += '<div class="col-25">'+ item.val().dia +'</div>';
-                listHtml += '<div class="col-25">'+ item.val().pratododia +'</div>';
-                listHtml += '<div class="col-25">'+ item.val().descricao +'</div>';
-                listHtml += '<div class="col-25">'+ item.val().preco +'</div>';
-                listHtml += '<div class="col-25"><img src="'+ item.val().imagem +'" width="200" height="150"/></div>';
+                listHtml += '<div class="col-20">'+ item.val().dia +'</div>';
+                listHtml += '<div class="col-20">'+ item.val().pratododia +'</div>';
+                listHtml += '<div class="col-20">'+ item.val().descricao +'</div>';
+                listHtml += '<div class="col-20">'+ item.val().preco +'</div>';
+                listHtml += '<div class="col-100"><img src="'+ item.val().imagem +'" width="320" height="200"/></div>';
                 listHtml += '</div>';
                 //e.append(listHtml).innerHTML;
                 if (semana[dia] == item.val().dia){

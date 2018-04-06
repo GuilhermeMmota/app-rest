@@ -67,7 +67,7 @@ $$('#my-login-screen .SignUp').on('click', function () {
     .createUserWithEmailAndPassword(username,password)
     .then( function(){
       app.dialog.alert('Welcome: ' + username);
-      this.$$('.toolbar-inner').text('Welcome: ' + username);   
+      this.$$('.logado').text('Welcome: ' + username);   
       $$('#contato').show();      
     })
     .catch(function(error){
@@ -102,7 +102,7 @@ $$('#my-login-screen .SignUp').on('click', function () {
       .signInWithEmailAndPassword(username,password)
       .then( function(){
         app.dialog.alert('Welcome: ' + username);
-        this.$$('.toolbar-inner').text('Welcome: ' + username + ' you are online');
+        this.$$('.logado').text( username + ' Online');
         $$('.logoff').show();
         $$('#contato').show(); 
         $$('.login-screen-open').hide();
@@ -130,7 +130,7 @@ $$('#my-login-screen .SignOut').on('click', function () {
     .auth()
     .signOut()
     .then( function () {
-      this.$$('.toolbar-inner').text('Usuário não autenticado');
+      this.$$('.logado').text('Usuário não autenticado');
       app.dialog.alert('Usuário não autenticado');
       app.loginScreen.close('#my-login-screen');
       $$('.logoff').hide();
@@ -148,11 +148,12 @@ $$('.logoff').on('click', function () {
     .auth()
     .signOut()
     .then( function () {
-      this.$$('.toolbar-inner').text('Usuário não autenticado');
-      app.dialog.alert('Usuário não autenticado');
+      this.$$('.logado').text('Usuário não autenticado');
+      app.dialog.alert('Usuário Deslogado');
       $$('#email').val('');
       $$('#password').val('');
       $$('.logoff').hide();
+      $$('#contato').hide();
       $$('.login-screen-open').show();
     }, function(error){
       console.error(error)
