@@ -13,3 +13,48 @@
 .statusbar-overlay {
     background: #000000;
 }
+
+.telefone:after, .telefone:before {
+	content: "";
+	display: inline-block;
+	width: 80px;
+}
+.subtitulo, .abo h2 {
+	color: #4d4d4d;
+	font-size: 25px;
+	letter-spacing: .1em;
+	text-align: center;
+	border-top: 2px solid #4d4d4d;
+	border-bottom: 2px solid #4d4d4d;
+	text-transform: uppercase;
+}
+p{
+	text-align: center;
+}
+.cardapio{
+	text-align: center;
+}
+
+.nav-footer ul li:before {
+	content: "•";
+	display: inline-block;
+	position: absolute;
+	margin-left: -15px;
+	color: #787367;
+}
+
+
+.nav-footer li {
+	display: inline-block;
+	padding: 10px;
+	font-size: 2em;
+}
+.nav-footer ul li a {
+	color: #787367;
+}
+
+.fundo img{
+	position: relative;
+	left: 120px;
+}
+

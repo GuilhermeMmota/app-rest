@@ -9,7 +9,7 @@ $$('#contato').hide();
 var app  = new Framework7({
   root: '#app', // App root element
   id: 'io.framework7.testapp', // App bundle ID
-  name: 'Framework7', // App name
+  name: 'Rest', // App name
   theme: 'auto', // Automatic theme detection
   // App root data
   data: function () {
@@ -66,9 +66,9 @@ $$('#my-login-screen .SignUp').on('click', function () {
     .auth()
     .createUserWithEmailAndPassword(username,password)
     .then( function(){
-      app.dialog.alert('Welcome: ' + username);
-      this.$$('.logado').text('Welcome: ' + username);   
-      $$('#contato').show();      
+      app.dialog.alert('Cadastrado com sucesso ' + username);
+      this.$$('.logado').text('Welcome ' + username);   
+      $$('#contato').hide();      
     })
     .catch(function(error){
       console.error(error.code)
@@ -170,10 +170,11 @@ firebase.database().ref('cardapio').on('value', function (snapshot){
 
           listHtml += '<div class="col-20">'+ item.val().dia +'</div>';
           listHtml += '<div class="col-20">'+ item.val().pratododia +'</div>';
-          listHtml += '<div class="col-20">'+ item.val().descricao +'</div>';
           listHtml += '<div class="col-20">'+ item.val().preco +'</div>';
-          listHtml += '<div class="col-100"><img src="'+ item.val().imagem +'" width="300" height="200"/></div>';
+          listHtml += '<div class="col-100"><img src="'+ item.val().imagem +'" width="320" height="200"/></div>';
           listHtml += '</div>';
+          listHtml += '<div class="col-20">'+ item.val().descricao +'</div>';
+          
           //e.append(listHtml).innerHTML;
           if (semana[dia] == item.val().dia){
               $$("#usersList").append(listHtml);

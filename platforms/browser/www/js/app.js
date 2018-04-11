@@ -1,5 +1,7 @@
 // Dom7
 var $$ = Dom7;
+$$('.logoff').hide();
+$$('.login-screen-open').show();
 
 // Framework7 App main instance
 var app  = new Framework7({
@@ -40,14 +42,137 @@ var mainView = app.views.create('.view-main', {
   url: '/'
 });
 
-// Login Screen Demo
-$$('#my-login-screen .login-button').on('click', function () {
-  var username = $$('#my-login-screen [name="username"]').val();
-  var password = $$('#my-login-screen [name="password"]').val();
-
-  // Close login screen
-  app.loginScreen.close('#my-login-screen');
+//// Login Screen Demo
+//$$('#my-login-screen .login-button').on('click', function () {
+//  var username = $$('#my-login-screen [name="username"]').val();
+//  var password = $$('#my-login-screen [name="password"]').val();
+//
+// 
+//
+//  // Alert username and password
+//  app.dialog.alert('Username: ' + username + '<br>Password: ' + password);
+//});
+//// -------------------SignUp------------------
+$$('#my-login-screen .SignUp').on('click', function () {
+ var username = $$('#my-login-screen [name="email"]').val();
+ var password = $$('#my-login-screen [name="password"]').val();
 
   // Alert username and password
-  app.dialog.alert('Username: ' + username + '<br>Password: ' + password);
+  //app.dialog.alert('Username: ' + username + '<br>Password: ' + password);
+  firebase
+    .auth()
+    .createUserWithEmailAndPassword(username,password)
+    .then( function(){
+      app.dialog.alert('Welcome: ' + username);
+      this.$$('.toolbar-inner').text('Welcome: ' + username);         
+    })
+    .catch(function(error){
+      console.error(error.code)
+      console.error(error.message)
+      if (error.code =='auth/ivalid-email'){
+        app.dialog.alert('Email invalido no seu formato!!!');
+      }$$('#btnSalvar').on('click', function () {
+        var formData = app.form.convertToData('#form-user-content')
+        var name = $$('#name [name="email"]').val();
+        var name = $$('#password [name="password"]').val();
+    alert(JSON.stringify(formData))
+    firebase.database().ref().child('usuarios').push(JSON.stringify(formData))
+    
 });
+      app.dialog.alert('Falha ao cadastrar, verifique o erro no console');
+    })
+  // Close login screen
+  app.loginScreen.close('#my-login-screen');
+});
+
+  // ------------------------------SingIn----------------------------------
+
+  $$('#my-login-screen .SignIn').on('click', function () {
+    var username = $$('#my-login-screen [name="email"]').val();
+    var password = $$('#my-login-screen [name="password"]').val();
+    
+    // Alert username and password
+    app.dialog.alert('Username: ' + username + '<br>Password:' + password);
+    firebase
+      .auth()
+      .signInWithEmailAndPassword(username,password)
+      .then( function(){
+        app.dialog.alert('Welcome: ' + username);
+        this.$$('.toolbar-inner').text('Welcome: ' + username + ' you are online');
+        $$('.logoff').show();
+        $$('.login-screen-open').hide();
+        $$('#email').val('');
+        $$('#password').val('');
+      })
+      .cath( function(error){
+        console.error(error.code)
+        console.error(error.message)
+        if (error.code =='auth/invalid-email'){
+          app.dialog.alert('Email invalido.');
+        }
+        app.dialog.alert('Falha ao cadastrar, verifique o erro no console');
+      })
+
+      // // Close login screen
+      app.loginScreen.close('#my-login-screen');
+     });
+
+    // --------------------SignOut-----------------
+$$('#my-login-screen .SignOut').on('click', function () {
+  app.loginScreen.close('#my-login-screen');
+  $$('#email').val('');
+  $$('#password').val('');
+  firebase
+    .auth()
+    .signOut()
+    .then( function () {
+      this.$$('.toolbar-inner').text('Usuário não autenticado');
+      app.dialog.alert('Usuário não autenticado');
+      app.loginScreen.close('#my-login-screen');
+      $$('.logoff').hide();
+      $$('.login-screen-open').show();      
+    }, function(error){
+      console.error(error)
+    })
+});
+$$('#my-login-screen .login-screen-close').on('click', function () {
+  $$('#email').val('');
+  $$('#password').val('');
+})
+$$('.logoff').on('click', function () {
+  firebase
+    .auth()
+    .signOut()
+    .then( function () {
+      this.$$('.toolbar-inner').text('Usuário não autenticado');
+      app.dialog.alert('Usuário não autenticado');
+      $$('#email').val('');
+      $$('#password').val('');
+      $$('.logoff').hide();
+      $$('.login-screen-open').show();
+    }, function(error){
+      console.error(error)
+    })  
+})
+// ======================cardapio================
+firebase.database().ref('cardapio').on('value', function (snapshot){
+  //usersList.innerHTML = '';
+  $$("#usersList").empty();
+
+  snapshot.forEach(function(item){
+        var listHtml = '<div class="row block block-strong">';
+          //listHtml += '<td class="label-cell">'+item.key+'</td>';
+
+          listHtml += '<div class="col-25">'+ item.val().dia +'</div>';
+          listHtml += '<div class="col-25">'+ item.val().pratododia +'</div>';
+          listHtml += '<div class="col-25">'+ item.val().descricao +'</div>';
+          listHtml += '<div class="col-25">'+ item.val().preco +'</div>';
+          listHtml += '<div class="col-25"><img src="'+ item.val().imagem +'" width="200" height="150"/></div>';
+          listHtml += '</div>';
+          //e.append(listHtml).innerHTML;
+          if (semana[dia] == item.val().dia){
+              $$("#usersList").append(listHtml);
+          }    
+      
+  })
+})
